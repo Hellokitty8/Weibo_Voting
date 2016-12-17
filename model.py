@@ -43,7 +43,7 @@ class Model:
         f = open('/mnt/lab/data1.txt','r') # the all votng words document.
 
         try:
-            return len(patt.findall(f.read())) #findall接受str类型，之前我把file 类型房间去，结果傻逼了
+            return len(patt.findall(f.read())) #findall接受str类型，
         finally:                                #不管结果如何，都会执行finally模块的语句
             f.close()
 
