@@ -1,0 +1,27 @@
+wm1: 0.01
+ts1: 0.5
+ts2: 0.3
+dim: 10
+epsino: 0.05
+regular coefficient: 5
+recall:
+-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	
+precision:
+-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	-nan	
+fvalue:
+-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	-2147483648	
+roc curve points:
+x	y
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+0	-nan
+
+

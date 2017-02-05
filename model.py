@@ -9,39 +9,37 @@ import math
 
 class Model:
 
-    """
-    This is model to analysis the sismilarity of each user based on voting they have participate.
+#"""
+#This is model to analysis the sismilarity of each user based on voting they have participate.
 
-    After cutting the votes into bag of words and aggregate them into an user-level document
-    .A user may have a very long list of words. The most important words will be selected
-    by the creatword function. The outputs reduced the number of words in the list, which still
-    can pefect represrent the semantic meaning of the user level perferences.
+#After cutting the votes into bag of words and aggregate them into an user-level document.
+#A user may have a very long list of words. The most important words will be selected
+#by the creatword function. The outputs reduced the number of words in the list, which still
+#can pefect represrent the semantic meaning of the user level perferences.
 
-    model digram:
+#model digram:
 
-         ---------           |           ----------           ------------           ------------       -----------------
-    ----|  word2vt |-------- |----------|  creatword | ------| list generate | ------|list ID   |-------|Cosine distance|
-         ---------           |           ----------           ------------            ------------       ----------------
-                             |
+#	 ---------           |           ----------           ------------           ------------       -----------------
+#----|  word2vt |--------|----------|  creatword | ------| list generate | ------|list ID   |-------|Cosine distance|
+#	 ---------           |           ----------           ------------            ------------       ----------------
+#						 |
 
 
 
-    e.g. This model used to caulate the similarity of the users who have participated the voting
-    based on the semantic analysis in their user-level aggregated voting document.
+#e.g. This model used to caulate the similarity of the users who have participated the voting
+#based on the semantic analysis in their user-level aggregated voting document.
 
-    Dependency: /mnt/lab/data1.txt
+#Dependency: /mnt/lab/data1.txt
 
-    """
+#"""
 
     def __init__(self, origin_file1, origin_file2, result_file1, result_file2, result_file3, result_file4, num):
-    """
-
-    @brief The function to select the subset of the important words from the words list
-    @param Origin_file: The user_level words aggragated document eg: /mnt/lab/user_comments_hot.csv
-    Result_file: The selected key words will be saved in this file. eg: /mnt/lab/word_b_1.txt
-    Num: the number of lines in the document eg: 4836
-
-    """
+    # """
+    #@brief The function to select the subset of the important words from the words list
+    #@param Origin_file: The user_level words aggragated document eg: /mnt/lab/user_comments_hot.csv
+    #Result_file: The selected key words will be saved in this file. eg: /mnt/lab/word_b_1.txt
+    #Num: the number of lines in the document eg: 4836
+    #"""
         #load the config
         #the input data
         self.origin_file1 = origin_file1
@@ -52,11 +50,11 @@ class Model:
         self.result_file4 = result_file4
         self.num = num
 
-    def tol (self，gui):
-    """
-    @brief The counter to caculate the number of 'gui' word in the given document
-    @param gui: The target word thta to be found in the document
-    """
+    def tol (gui):
+    #"""
+    #@brief The counter to caculate the number of 'gui' word in the given document
+    #@param gui: The target word thta to be found in the document
+    #"""
         patt = re.compile(gui)
 
         f = open('/mnt/lab/data1.txt','r') # the all votng words document.
@@ -69,13 +67,13 @@ class Model:
 
     def creatword (self):
 
-    """
-    @brief The function to select the subset of the important words from the words list
-    @param Origin_file: The user_level words aggragated document eg: /mnt/lab/user_comments_hot.csv
-    Result_file: The selected key words will be saved in this file. eg: /mnt/lab/word_b_1.txt
-    Num: the number of lines in the document eg: 4836
+    #"""
+    #@brief The function to select the subset of the important words from the words list
+    #@param Origin_file: The user_level words aggragated document eg: /mnt/lab/user_comments_hot.csv
+    #Result_file: The selected key words will be saved in this file. eg: /mnt/lab/word_b_1.txt
+    #Num: the number of lines in the document eg: 4836
 
-    """
+    #"""
         count1=0
         with open(self.origin_file,'wb') as f:
             for line in open(self.result_file1):
@@ -106,13 +104,13 @@ class Model:
 
     def creatlist (self):
 
-    """
-    @brief The function to select the subset of the important words from the words list
-    @param Origin_file: The user_level words aggragated document eg: /mnt/lab/user_comments_hot.csv
-    Result_file: The selected key words will be saved in this file. eg: /mnt/lab/word_b_1.txt
-    Num: the number of lines in the document eg: 4836
+    #"""
+    #@brief The function to select the subset of the important words from the words list
+    #@param Origin_file: The user_level words aggragated document eg: /mnt/lab/user_comments_hot.csv
+    #Result_file: The selected key words will be saved in this file. eg: /mnt/lab/word_b_1.txt
+    #Num: the number of lines in the document eg: 4836
 
-    """
+    #"""
 
         with open(self.result_file2,'wb') as f:
             for line in open(self.result_file1):
@@ -153,10 +151,9 @@ class Model:
 
     def list_id (self):
 
-    """
-    @brief The function is to append the id to the words list
-
-    """
+    #"""
+    #@brief The function is to append the id to the words list
+    #"""
 
         a=pd.read_csv(self.origin_file12,sep='"')
         b=pd.read_csv(self.result_file2,sep='[')
@@ -165,8 +162,6 @@ class Model:
         print "list_id"
         d=len(a)
         print "list_id:"+d
-
-
         with open(self.result_file3,'wb') as f:
             for i in range(181448):
                 id_1=a.iloc[i][0]
@@ -185,9 +180,10 @@ class Model:
 
     def distance (self):
 
-    """
-    @brief The final function to caculate the diatance
-    """
+    
+	#"""
+    #@brief The final function to caculate the diatance
+    #"""
         a=pd.read_csv(self.result_file3,sep=';')
         #b=pd.read_csv('C:/Users/hkpuadmin/Desktop/origin.csv',sep=',')
 
